@@ -1,0 +1,108 @@
+{
+    "estacas": [
+        {
+            "sigla": "NOR",
+            "nome": "Aracajú Norte",
+            "alas": [
+                "Centenário",
+                "Jardim Mariana",
+                "Santos Dumont 1",
+                "Santos Dumont 2",
+                "Socorro 1",
+                "Socorro 2",
+                "Socorro 3",
+                "Soledade"
+            ]
+        },
+        {
+            "sigla": "SUL",
+            "nome": "Aracajú Sul",
+            "alas": [
+                "América",
+                "Aruana",
+                "Atalaia",
+                "Eduardo Gomes",
+                "Grageru 1",
+                "Grageru 2",
+                "Siqueira Campos",
+                "São Cristovão"
+            ]
+        },
+        {
+            "sigla": "ARA",
+            "nome": "Arapiraca",
+            "alas": [
+                "Arapiraca 1",
+                "Arapiraca 2",
+                "Brasília",
+                "Jardim Brasil",
+                "Palmeira dos Índios",
+                "Penedo",
+                "Primavera",
+                "Verdes Campos"
+            ]
+        },
+        {
+            "sigla": "COL",
+            "nome": "Maceió Colina",
+            "alas": [
+                "Boa Vista",
+                "Campos dos Palmares",
+                "Clima Bom",
+                "Colina",
+                "Paraíso",
+                "Rio Largo"
+            ]
+        },
+        {
+            "sigla": "LIT",
+            "nome": "Maceió Litoral",
+            "alas": [
+                "Alvorada",
+                "Bebedouro",
+                "Mirante",
+                "Prado",
+                "São Miguel dos Campos",
+                "Trapiche",
+                "Barra de São Miguel"
+            ]
+        },
+        {
+            "sigla": "PAJ",
+            "nome": "Maceió Pajuçara",
+            "alas": [
+                "Bariloche",
+                "Canadá",
+                "Jacintinho",
+                "Jatiúca",
+                "Pajuçara"
+            ]
+        },
+        {
+            "sigla": "MAC",
+            "nome": "Maceió",
+            "alas": [
+                "Antares",
+                "Farol",
+                "Feitosa",
+                "Jardim Alagoas",
+                "Jardim do Horto",
+                "José Tenório",
+                "Pitanguinha"
+            ]
+        },
+        {
+            "sigla": "TAB",
+            "nome": "Maceió Tabuleiro",
+            "alas": [
+                "Aeroclube",
+                "Benedito Bentes",
+                "Gurguri",
+                "Pratagy",
+                "Tabuleiro",
+                "Universitário"
+            ]
+        }
+
+    ]
+}

@@ -1,0 +1,1 @@
+<!-- Página em uso para ativar caravanas. -->
