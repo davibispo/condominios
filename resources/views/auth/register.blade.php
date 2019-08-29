@@ -12,10 +12,10 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Primeiro nome</label>
+                            <label for="name" class="col-md-4 control-label">Nome</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="ou nome composto" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Nome completo" required autofocus>
 
                                 @if ($errors->has('name'))
                                 <span class="help-block">
@@ -25,17 +25,80 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
-                            <label for="lastname" class="col-md-4 control-label">Sobrenomes</label>
+                        <div class="form-group{{ $errors->has('tipo') ? ' has-error' : '' }}">
+                            <label for="tipo" class="col-md-4 control-label">Tipo</label>
 
                             <div class="col-md-6">
-                                <input id="lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}" required autofocus>
-
-                                @if ($errors->has('lastname'))
+                                {!! Form::select('tipo', 
+                                    [
+                                        'Proprietário'      => 'Proprietário (Responsável)', 
+                                        'Inquilino'         => 'Inquilino (Responsável)', 
+                                        'Apenas Morador'    => 'Apenas Morador', 
+                                        'Outro'             => 'Outro', 
+                                    ], 
+                                    null, ['class' => 'form-control', 'required', 'placeholder' => '-- Escolha --']) 
+                                !!}   
+                                @if ($errors->has('tipo'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('lastname') }}</strong>
+                                    <strong>{{ $errors->first('tipo') }}</strong>
                                 </span>
                                 @endif
+                            </div>
+                        </div>
+                        <!-- Bloco e apto -->
+                        <div class="form-group{{ $errors->has('tipo') ? ' has-error' : '' }}">
+                            <label for="tipo" class="col-md-4 control-label">Unidade</label>
+
+                            <div class="col-md-6">
+                                {!! Form::select('bloco',
+                                    [
+                                    '1'=>'1',   
+                                    '2'=>'2',   
+                                    '3'=>'3',   
+                                    '4'=>'4',   
+                                    '5'=>'5',   
+                                    '6'=>'6',   
+                                    '7'=>'7',   
+                                    '8'=>'8',   
+                                    '9'=>'9',   
+                                    '10'=>'10',   
+                                    '11'=>'11',   
+                                    '12'=>'12',   
+                                    '13'=>'13',   
+                                    '14'=>'14',   
+                                    '15'=>'15',   
+                                    '16'=>'16',   
+                                    '17'=>'17',   
+                                    '18'=>'18',   
+                                    '19'=>'19',   
+                                    '20'=>'20',   
+                                    '21'=>'21',   
+                                    '22'=>'22',   
+                                    ],
+                                    null, ['class' => 'form-control', 'required', 'placeholder' => '-- Bloco --'])     
+                                !!}
+                                {!! Form::select('apto', 
+                                    [
+                                    '001'=>'001',
+                                    '002'=>'002',
+                                    '003'=>'003',
+                                    '004'=>'004',
+                                    '101'=>'101',
+                                    '102'=>'102',
+                                    '103'=>'103',
+                                    '104'=>'104',
+                                    '201'=>'201',
+                                    '202'=>'202',
+                                    '203'=>'203',
+                                    '204'=>'204',
+                                    '301'=>'301',
+                                    '302'=>'302',
+                                    '303'=>'303',
+                                    '304'=>'304',
+                                    's/u'=>'s/u',
+                                    ],
+                                    null, ['class' => 'form-control', 'required', 'placeholder' => '-- Apartamento --']) 
+                                !!}
                             </div>
                         </div>
                         <!--sexo-->
@@ -49,37 +112,23 @@
                                 </select>
                             </div>
                         </div>  
-                        <!--rg-->
-                        <div class="form-group{{ $errors->has('rg') ? ' has-error' : '' }}">
-                            <label for="rg" class="col-md-4 control-label">RG</label>
+                        <!--cpf-->
+                        <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
+                            <label for="cpf" class="col-md-4 control-label">CPF</label>
 
                             <div class="col-md-6">
-                                <input id="rg" type="text" class="form-control" name="rg" value="{{ old('rg') }}" placeholder="ou Registro Nasc.(últimos 10 números)" required autofocus>
+                                <input id="cpf" type="text" maxlength="11" class="form-control" name="cpf" value="{{ old('cpf') }}" placeholder="digite apenas números" required autofocus>
 
-                                @if ($errors->has('rg'))
+                                @if ($errors->has('cpf'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('rg') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('orgao_exp') ? ' has-error' : '' }}">
-                            <label for="orgao_exp" class="col-md-4 control-label">Órgão Expeditor/UF</label>
-
-                            <div class="col-md-6">
-                                <input id="orgao_exp" type="text" class="form-control" name="orgao_exp" value="{{ old('orgao_exp') }}" required autofocus>
-
-                                @if ($errors->has('orgao_exp'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('orgao_exp') }}</strong>
+                                    <strong>{{ $errors->first('cpf') }}</strong>
                                 </span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group{{ $errors->has('dt_nasc') ? ' has-error' : '' }}">
-                            <label for="dt_nasc" class="col-md-4 control-label">Data de Nascimento</label>
+                            <label for="dt_nasc" class="col-md-4 control-label">Nascimento</label>
 
                             <div class="col-md-6">
                                 <input id="dt_nasc" type="date" class="form-control" name="dt_nasc" value="{{ old('dt_nasc') }}" required autofocus>
@@ -92,62 +141,66 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                            <label for="phone" class="col-md-4 control-label">Telefone</label>
+                        <div class="form-group{{ $errors->has('phone1') ? ' has-error' : '' }}">
+                            <label for="phone1" class="col-md-4 control-label">Telefone 1</label>
 
                             <div class="col-md-6">
-                                <input type="tel" name="phone" value="{{ old('phone') }}" class="form-control" placeholder="82999998888" equired autofocus>
-                                @if ($errors->has('phone'))
+                                <input type="tel" name="phone1" value="{{ old('phone1') }}" class="form-control" placeholder="82999998888" required autofocus>
+                                @if ($errors->has('phone1'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('phone') }}</strong>
+                                    <strong>{{ $errors->first('phone1') }}</strong>
                                 </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('uf') ? ' has-error' : '' }}">
-                            {!! Form::label('uf', 'UF', ['class'=>'col-md-4 control-label']) !!}
-                            <div class="col-md-6">
-                                <select name="uf" id="uf" class="form-control" required>
-                                    <option value="">-- Escolha o Estado --</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
-                            {!! Form::label('city', 'Cidade', ['class'=>'col-md-4 control-label']) !!}
-                            <div class="col-md-6">
-                                <select name="city" id="cidade" class="form-control" style="display:none;" required></select>
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('stake') ? ' has-error' : '' }}">
-                            <label for="stake" class="col-md-4 control-label">Estaca</label>
+                        <div class="form-group{{ $errors->has('phone2') ? ' has-error' : '' }}">
+                            <label for="phone2" class="col-md-4 control-label">Telefone 2</label>
 
                             <div class="col-md-6">
-                                <select name="stake" id="stake" class="form-control" value="{{ old('stake') }}" required autofocus>
-                                    <option value="">-- Escolha a Estaca --</option>
-                                </select>
-
-                                @if ($errors->has('stake'))
+                                <input type="tel" name="phone2" value="{{ old('phone2') }}" class="form-control" placeholder="82999998888" autofocus>
+                                @if ($errors->has('phone2'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('stake') }}</strong>
+                                    <strong>{{ $errors->first('phone2') }}</strong>
                                 </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('ward') ? ' has-error' : '' }}">
-                            <label for="ward" class="col-md-4 control-label">Ala/Ramo</label>
+                        <div class="form-group{{ $errors->has('foto') ? ' has-error' : '' }}">
+                            <label for="foto" class="col-md-4 control-label">{{ __('Foto') }}</label>
 
                             <div class="col-md-6">
-                                <select name="ward" id="ward" class="form-control" style="display:none;" value="{{ old('ward') }}" required autofocus></select>
+                                {!! Form::file('foto', null, ['class' => 'form-control']) !!}  
+                            </div>
+                        </div>
 
-                                @if ($errors->has('ward'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('ward') }}</strong>
-                                </span>
-                                @endif
+                        <div class="form-group{{ $errors->has('residentes') ? ' has-error' : '' }}">
+                            <label for="residentes" class="col-md-4 control-label">Residente com</label>
+
+                            <div class="col-md-6">
+                                <table class="table table-sm">
+                                    <tr>
+                                        <td width="70%">{!! Form::text('residente1', null, ['class' => 'form-control', 'placeholder'=>'Nome']) !!} </td>
+                                        <td>{!! Form::number('idade_residente1', null, ['class' => 'form-control', 'min'=>'1', 'max'=>'110', 'placeholder'=>'Idade']) !!}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{!! Form::text('residente2', null, ['class' => 'form-control', 'placeholder'=>'Nome']) !!}</td>
+                                        <td>{!! Form::number('idade_residente2', null, ['class' => 'form-control', 'placeholder'=>'Idade']) !!}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{!! Form::text('residente3', null, ['class' => 'form-control', 'placeholder'=>'Nome']) !!}</td>
+                                        <td>{!! Form::number('idade_residente3', null, ['class' => 'form-control', 'placeholder'=>'Idade']) !!}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{!! Form::text('residente4', null, ['class' => 'form-control', 'placeholder'=>'Nome']) !!}</td>
+                                        <td>{!! Form::number('idade_residente4', null, ['class' => 'form-control', 'placeholder'=>'Idade']) !!}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{!! Form::text('residente5', null, ['class' => 'form-control', 'placeholder'=>'Nome']) !!}</td>
+                                        <td>{!! Form::number('idade_residente5', null, ['class' => 'form-control', 'placeholder'=>'Idade']) !!}</td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
 
@@ -190,7 +243,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Registrar
+                                    Cadastrar
                                 </button>
                             </div>
                         </div>
@@ -201,104 +254,3 @@
     </div>
 </div>
 @endsection
-
-@push('scripts')
-<!-- Script para trazer os estados e cidades nos selects -->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-//verificar
-        $.ajax({
-            url: 'https://gist.githubusercontent.com/letanure/3012978/raw/36fc21d9e2fc45c078e0e0e07cce3c81965db8f9/estados-cidades.json'
-            , type: 'GET'
-            , dataType: 'json'
-            , cache: true
-            , success: function (json) {
-                //Fala que o json a Var global json (window.json) é json
-                window.json = json;
-
-                var seletorUf = $("#uf");
-                for (i in json.estados) {
-                    var estado = json.estados[i];
-                    $("<option />", {value: estado.sigla, text: estado.nome}).appendTo(seletorUf);
-                }
-            }
-            , error: function (json) {
-                //console.log(json);
-            }
-        });
-
-        $("#uf").bind("change", function () {
-            var ufSelecionado = $(this).val();
-
-            var selectCidades = $("#cidade");
-            selectCidades.empty();
-            selectCidades.show();
-
-        //Percorre todo o Loop de estados
-            for (i in json.estados) {
-                var estado = json.estados[i];
-
-                //Caso a sigla seja a mesma selecionada
-                if (estado.sigla === ufSelecionado) {
-                    for (x in estado.cidades) {
-                        var cidade = estado.cidades[x];
-                        $("<option />", {value: x.cidades, text: cidade}).appendTo(selectCidades);
-                    }
-
-                    //Break loop (Improve performace?)
-                    return false;
-                }
-            }
-        });
-    });
-  
-    //script para os selects das estacas e alas
-    $(document).ready(function () {
-        //verificar
-        $.ajax({
-            url: 'https://gist.githubusercontent.com/davibispo/280e4c58786d298dd21038a21ec55fdc/raw/6892f99d8662a8cd3d4dd943f3972b9a4fa11619/estacas-alas.json',
-            type: 'GET',
-            dataType: 'json',
-            cache: true,
-            success: function (json) {
-                //Fala que o json a Var global json (window.json) é json
-                window.json1 = json;
-
-                var seletorStake = $("#stake");
-                for (j in json1.estacas) {
-                    var estaca = json1.estacas[j];
-                    $("<option />", {value: estaca.nome, text: estaca.nome}).appendTo(seletorStake);
-                }
-            }
-            , error: function (json) {
-                //console.log(json);
-            }
-        });
-
-        $("#stake").bind("change", function () {
-            var stakeSelecionado = $(this).val();
-
-            var selectWards = $("#ward");
-            selectWards.empty();
-            selectWards.show();
-
-            //Percorre todo o Loop de estacas
-            for (j in json1.estacas) {
-                var estaca = json1.estacas[j];
-
-                //Caso a sigla seja a mesma selecionada
-                if (estaca.nome === stakeSelecionado) {
-                    for (y in estaca.alas) {
-                        var ala = estaca.alas[y];
-                        $("<option />", {value: y.alas, text: ala}).appendTo(selectWards);
-                    }
-
-                    //Break loop (Improve performace?)
-                    return false;
-                }
-            }
-        });
-    });
-</script>
-

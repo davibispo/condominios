@@ -15,20 +15,37 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 30);
-            $table->string('lastname', 50);
+            $table->char('ativo', 1)->default(0);
+            $table->char('status', 1)->default(0);
+            $table->string('tipo', 30)->nullable();
+            $table->string('bloco', 5)->nullable();
+            $table->string('apto', 5)->nullable();
+            $table->string('name');
+            $table->string('cpf', 11)->unique();
             $table->char('genre', 1);
-            $table->string('rg', 50)->unique();
-            $table->string('orgao_exp', 10)->nullable();//orgao e uf
             $table->date('dt_nasc');
-            $table->string('phone', 15);
-            $table->char('uf', 2);
-            $table->string('city', 60);
-            $table->string('stake', 40);
-            $table->string('ward', 40);
-            $table->string('email', 80)->unique();
+            $table->string('phone1', 15);
+            $table->string('phone2', 15)->nullable();
+            $table->text('foto')->nullable();
+
+            $table->string('residente1', 80)->nullable();
+            $table->integer('idade_residente1')->nullable();
+            
+            $table->string('residente2', 80)->nullable();
+            $table->integer('idade_residente2')->nullable();
+            
+            $table->string('residente3', 80)->nullable();
+            $table->integer('idade_residente3')->nullable();
+            
+            $table->string('residente4', 80)->nullable();
+            $table->integer('idade_residente4')->nullable();
+            
+            $table->string('residente5', 80)->nullable();
+            $table->integer('idade_residente5')->nullable();
+
+            $table->string('email', 80);
             $table->string('password');
-            $table->boolean('ativo')->default(true);
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

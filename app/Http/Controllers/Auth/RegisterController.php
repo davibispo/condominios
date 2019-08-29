@@ -50,18 +50,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:30',
-            'lastname' => 'required|string|max:50',
-            'genre' => 'required',
-            'rg' => 'required|unique:users',
-            'orgao_exp' => 'required|string|max:10',
+            'name' => 'required|string|max:120',
+            'cpf' => 'required|unique:users',
             'dt_nasc' => 'required|date',
-            'phone' => 'required',
-            'uf' => 'required|string',
-            'city' => 'required|string',
-            'stake' => 'required|string',
-            'ward' => 'required|string',
-            'email' => 'required|string|email|unique:users|max:100',
+            'phone1' => 'required',
+            'email' => 'required|string|email|max:150',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -74,18 +67,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        //dd($data);
         $user =  User::create([
+            'tipo' => $data['tipo'],
+            'bloco' => $data['bloco'],
+            'apto' => $data['apto'],
             'name' => strtoupper($data['name']),
-            'lastname' => strtoupper($data['lastname']),
             'genre' => $data['genre'],
-            'rg' => $data['rg'],
-            'orgao_exp' => strtoupper($data['orgao_exp']),
+            'cpf' => $data['cpf'],
             'dt_nasc' => $data['dt_nasc'],
-            'phone' => $data['phone'],
-            'uf' => $data['uf'],
-            'city' => $data['city'],
-            'stake' => $data['stake'],
-            'ward' => $data['ward'],
+            'phone1' => $data['phone1'],
+            'phone2' => $data['phone2'],
+            'foto' => $data['foto'],
+            'residente1' => strtoupper($data['residente1']),
+            'residente2' => strtoupper($data['residente2']),
+            'residente3' => strtoupper($data['residente3']),
+            'residente4' => strtoupper($data['residente4']),
+            'residente5' => strtoupper($data['residente5']),
+            'idade_residente1' => $data['idade_residente1'],
+            'idade_residente2' => $data['idade_residente2'],
+            'idade_residente3' => $data['idade_residente3'],
+            'idade_residente4' => $data['idade_residente4'],
+            'idade_residente5' => $data['idade_residente5'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
